@@ -130,7 +130,7 @@ public class ImageInputHelper {
 
         if (tempFileFromSource == null) {
             try {
-                tempFileFromSource = File.createTempFile("choose", ".png", mContext.getExternalCacheDir());
+                tempFileFromSource = File.createTempFile("choose", ".jpg", mContext.getExternalCacheDir());
                 tempUriFromSource = Uri.fromFile(tempFileFromSource);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -161,7 +161,7 @@ public class ImageInputHelper {
 
         if (tempFileFromCrop == null) {
             try {
-                tempFileFromCrop = File.createTempFile("crop", "png", mContext.getExternalCacheDir());
+                tempFileFromCrop = File.createTempFile("crop", ".jpg", mContext.getExternalCacheDir());
                 tempUriFromCrop = Uri.fromFile(tempFileFromCrop);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -178,6 +178,7 @@ public class ImageInputHelper {
         intent.putExtra("aspectY", aspectY);
         intent.putExtra("scale", true);
         intent.putExtra("noFaceDetection", true);
+        intent.putExtra("return-data", true);
         if (fragment == null) {
             mContext.startActivityForResult(intent, REQUEST_CROP_PICTURE);
         } else {
