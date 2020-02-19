@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -61,7 +62,10 @@ public class SelectImageActivity extends AppCompatActivity implements ImageInput
             // getting bitmap from uri
             Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
 
+             bitmap = Bitmap.createScaledBitmap(bitmap, 700, 700, true);
             // showing bitmap in image view
+/*            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);*/
             ((ImageView) findViewById(R.id.image)).setImageBitmap(bitmap);
 
         } catch (IOException e) {
